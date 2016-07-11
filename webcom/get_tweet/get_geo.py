@@ -20,9 +20,9 @@ def tweet_geo(latitude, longitude):
   # s = set()
   i = 0
   tweets = api.GetSearch(geocode=[latitude, longitude, u"1km"],count=200) #仙台
-  for k in range(0,10):
+  for k in range(0,1):
     for tweet in tweets:
-        if tweet.geo != None and i <= 1000: #一応geoタグが，違うものは省く
+        if tweet.geo != None and i <= 10: #一応geoタグが，違うものは省く
           tweets_get_geo.append(tweet)
           i += 1
 

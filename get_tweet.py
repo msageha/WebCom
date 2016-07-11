@@ -9,11 +9,11 @@ place = raw_input()
 lat_lng = from_place_to_lati_longi(place)
 lat, lng = lat_lng.values()
 
-print "緯度:" + lat + ", 経度:" + lng
+print "緯度:" + str(lat) + ", 経度:" + str(lng)
 
 tweets = tweet_geo(lat, lng)
 
 for tweet in tweets:
-  print tweet.text
+  print tweet
 
 print len(tweets)
