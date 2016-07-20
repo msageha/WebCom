@@ -15,23 +15,26 @@ var map = new google.maps.Map( canvas , mapOptions );
 
 // jsonを取得する
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "get_tweet/v1/get_tweet/?place=仙台");
+xhr.open("GET", "http://127.0.0.1:8000/get_tweet/v1/get_tweet/?place=仙台");
 xhr.responseType = "json";
-xhr.addEventListener("loadend", (ev) => {console.log(ev.target.response)})
+xhr.addEventListener("loadend", function(ev) {
+  console.log(ev.target.response)
+  var length = Object.keys(xhr.response).length
+  for (var i=0; i<length; i++) {
+    // マーカーのインスタンスを作成する
+    markers[i] = new google.maps.Marker({
+      map: map ,
+      position: new google.maps.LatLng( xhr.response[i]["geo"].coordinates[0] , xhr.response[i]["geo"].coordinates[1] ) ,
+    }) ;
+  }
+})
 xhr.send();
 
 // マーカーのインスタンスは配列で管理しよう
 var markers = [] ;
 
-// for (var i=0; i<Object.keys(xhr.response).length; i++) {
-//   // マーカーのインスタンスを作成する
-//   markers[i] = new google.maps.Marker({
-//     map: map ,
-//     position: new google.maps.LatLng( xhr.response[i]["geo"].coordinates[0] , xhr.response[i]["geo"].coordinates[1] ) ,
-//   }) ;
-// }
 
-markers[0] = new google.maps.Marker( {
-  map: map ,
-  position: new google.maps.LatLng( 38.268215, 140.8693558 ) ,
-} ) ;
+// markers[0] = new google.maps.Marker( {
+//   map: map ,
+//   position: new google.maps.LatLng( 38.268215, 140.8693558 ) ,
+// } ) ;

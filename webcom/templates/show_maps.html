@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+  <body>
+    <!-- 地図のキャンパス -->
+    <div class="map-embed">
+    <div id="map-canvas"></div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBLfpk0-ZwbmcFf7grnMArYGjSb86qIlA"></script>
+    testaaa
+    <link rel="stylesheet" href="{% static 'show_maps.css' %}">
+    <!-- <link href="show_maps.css" rel="stylesheet" type="text/css"> --> <!-- 外のcssを実行 -->
+    <script src="{% static 'show_maps.js' %}"></script> <!-- 外のjavascriptを実行 -->
+    <script var canvas = document.getElementById( 'map-canvas' ) ;
+    var latlng = new google.maps.LatLng( 38.268215, 140.8693558 );
+    var mapOptions = {zoom: 15 , center: latlng , };
+    var map = new google.maps.Map( canvas , mapOptions );>
+    </script> 
+  </body>
+</html>

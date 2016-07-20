@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
   url(r'^admin/', admin.site.urls),
   url(r'^get_tweet/', include('get_tweet.urls', namespace='get_tweet')),
+  url(r'^showmap/', include('showmap.urls', namespace='showmap')),
 ]
