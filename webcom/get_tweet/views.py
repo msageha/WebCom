@@ -19,6 +19,8 @@ def get_tweet(request):
 
   i = 0
   tweets_dic = {}
+  tweets_dic["lat"] = lat
+  tweets_dic["lng"] = lng
   for tweet in tweets:
     tweet_dic = {"text": tweet.text, "geo": tweet.geo}
     tweets_dic[str(i)] = tweet_dic
